@@ -9,13 +9,13 @@ Space.Object.extend('Space.domain.Rule', {
   },
 
   onDependenciesReady() {
-    if (this.enforce !== undefined) {
+    if (this.enforceMap !== undefined) {
       this._setupRule();
     }
   },
 
   _setupRule() {
-    this._setupDeclarativeMappings('enforce', (function(_this) {
+    this._setupDeclarativeMappings('enforceMap', (function(_this) {
       return function(hook, methodName) {
         _this._hooks.addRuleHook(methodName, _this, hook)
       };
