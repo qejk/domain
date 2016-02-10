@@ -21,7 +21,8 @@ Package.onUse(function(api) {
   api.addFiles([
     'source/namespace.js',
     'source/value-object.js',
-    'source/command.js'
+    'source/command.js',
+    'source/rule.js'
   ]);
 
   // SERVER ONLY
