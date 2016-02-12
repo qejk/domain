@@ -5,7 +5,8 @@ Space.Object.extend('Space.domain.Rule', {
   ],
 
   dependencies: {
-    _hooks: 'Space.messaging.HookRegistry'
+    hooks: 'Space.messaging.CommandBusHooks',
+    meteor: 'Meteor'
   },
 
   onDependenciesReady() {
@@ -16,8 +17,8 @@ Space.Object.extend('Space.domain.Rule', {
 
   _setupRule() {
     this._setupDeclarativeMappings('enforceMap', (function(_this) {
-      return function(hook, methodName) {
-        _this._hooks.addRuleHook(methodName, _this, hook)
+      return function(hook, command) {
+        _this.hooks.addRuleHook(command, _this, hook.bind(_this));
       };
     })(this));
   }
